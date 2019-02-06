@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { QuestionserviceService } from '../questionservice.service';
+import {FormGroup, FormBuilder} from '@angular/forms';
 
 @Component({
   selector: 'app-savequestion',
@@ -8,29 +9,33 @@ import { QuestionserviceService } from '../questionservice.service';
 })
 export class SavequestionComponent implements OnInit {
 
+  questionForm: FormGroup;
+
+
   title = 'Question';
 
-  public questionTitle: string;
-  public questionDescription: string;
-  public level: string;
-  public tags: string;
-  public testCases: string;
+  levels = ['-----Select Difficulty------', 'Beginner', 'Intermediate',
+            'Advance', 'Expert'];
 
-  public questionInfo = {
-    questionTitle: this.questionTitle,
-    questionDescription: this.questionDescription,
-    level : this.level,
-    tags : this.tags,
-    testCases : this.testCases
-  };
 
-  constructor(public questionservice: QuestionserviceService) { }
+  constructor(public questionservice: QuestionserviceService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    this.questionForm = this.formBuilder.group({
+      questionName: [''],
+      questionDescription: [''],
+      difficulty: [''],
+      tags: [''],
+      gitUrl: ['']
+    });
   }
 
-  submit() {
-    this.questionservice.saveQuestion(this.questionInfo);
+  submit(): any {
+    console.log('questionForm: ', this.questionForm.value);
+    this.questionservice.saveQuestion( this.questionForm.value).subscribe(
+      data => {
+        console.log('data is ', data);
+    });
   }
 
 }

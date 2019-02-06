@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class QuestionserviceService {
     console.log('http srvice got called');
   }
 
-  public saveQuestion(questionObj): any {
+  public saveQuestion(questionObj): Observable<any> {
     // tslint:disable-next-line:prefer-const
     let savedQuestionObj = this._http.post(this.questionPopulatorApidUrl + 'question', questionObj);
     console.log(savedQuestionObj);
