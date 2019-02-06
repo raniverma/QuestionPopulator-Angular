@@ -1,0 +1,34 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+    <h1>
+      Post your {{ title }}!
+    </h1>
+    <div class="col-lg-8 col-offset-4 centered">
+    <form #createForm="ngForm" (ngSubmit)="submit()">
+      <div class="col-lg-6 col-lg-offset-6">
+        <input type="text" name="questionName" class="form-control" id="exampleFormControlInput1" placeholder="Write Name of Question..">
+      </div>
+      <div class="col-lg-6 col-lg-offset-6">
+        <textarea class="form-control" name="questionDescription" id="exampleFormControlTextarea1" rows="7" placeholder="Write Question Description here.."></textarea>
+      </div>
+      <div class="col-lg-6 col-lg-offset-6">
+        <select class="form-control" name="difficulty" id="exampleFormControlSelect1">
+          <option>-----Select Difficulty------</option>
+          <option>Beginner</option>
+          <option>Intermediate</option>
+          <option>Advance</option>
+          <option>Expert</option>
+        </select>
+      </div>
+      <div class="col-lg-6 col-lg-offset-6">
+        <input type="text" name="tags" class="form-control" id="exampleFormControlInput1" placeholder="Write tags for Question like Dp,Greedy,Implementation">
+      </div>
+      <div class="col-lg-6 col-lg-offset-6">
+          <input type="text" name="tags" class="form-control" id="exampleFormControlInput1" placeholder="Enter git Url of testcases..">
+      </div>
+      <div class="col-lg-6 col-lg-offset-6">
+      <button type="button"  class="btn btn-success">Post Question</button>
+      </div>
+    </form>
+  </div>
+    </div>
