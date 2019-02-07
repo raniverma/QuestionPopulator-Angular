@@ -4,14 +4,25 @@
     </h1>
     <form [formGroup]="questionForm" (ngSubmit)="submit()">
       <div class="form-group">
-        <input type="text" formControlName="questionName" class="form-control" id="questionName" placeholder="Write Name of Question..">
+        <input type="text" formControlName="questionTitle" class="form-control" id="questionTitle" placeholder="Write Title of Question.." [ngClass]="{ 'is-invalid': submitted && f.questionTitle.errors }">
+      <div *ngIf="submitted && f.questionTitle.errors" class="invalid-feedback">
+          <div *ngIf="f.questionTitle.errors.required">Question Title is required</div>
+      </div>
       </div>
       <div class="form-group">
-        <textarea class="form-control" formControlName="questionDescription" id="questionDescription" rows="7" placeholder="Write Question Description here.."></textarea>
+        <textarea class="form-control" formControlName="questionDescription" id="questionDescription" rows="7" placeholder="Write Question Description here.."
+         [ngClass]="{ 'is-invalid': submitted && f.questionDescription.errors }"></textarea>
+        <div *ngIf="submitted && f.questionDescription.errors" class="invalid-feedback">
+            <div *ngIf="f.questionDescription.errors.required">Question Title is required</div>
+        </div>
       </div>
       <div class="form-group">
-        <select class="form-control" formControlName="difficulty" id="difficulty">
+        <select class="form-control" formControlName="difficulty" id="difficulty" placeholder="Select difficulty level..."
+        [ngClass]="{ 'is-invalid': submitted && f.difficulty.errors }">
             <option *ngFor="let level of levels" [value]="level">{{level}}</option>
+            <div *ngIf="submitted && f.difficulty.errors" class="invalid-feedback">
+                <div *ngIf="f.difficulty.errors.required">Question Title is required</div>
+            </div>
         </select>
       </div>
       <div class="form-group">
