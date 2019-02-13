@@ -10,7 +10,7 @@ export class QuestionserviceService {
   public questionPopulatorApidUrl = 'http://localhost:8090/api/v1/';
 
   constructor(private _http: HttpClient) {
-    console.log('http srvice got called');
+    console.log('http service got called');
   }
 
   public saveQuestion(questionObj): Observable<any> {

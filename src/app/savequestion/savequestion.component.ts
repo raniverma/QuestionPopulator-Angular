@@ -29,6 +29,8 @@ export class SavequestionComponent implements OnInit {
     this.questionForm = this.formBuilder.group({
       questionTitle: ['', Validators.required],
       questionDescription: ['', Validators.required],
+      inputFormat: ['', Validators.required],
+      outputFormat: ['', Validators.required],
       difficulty: ['', Validators.required],
       tags: ['', Validators.required],
       gitUrl: ['', Validators.required]
